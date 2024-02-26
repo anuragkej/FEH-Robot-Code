@@ -3,16 +3,19 @@
 #include <FEHIO.h>
 #include <FEHLCD.h>
 #include <FEHServo.h>
+
 // declare motor on motor port 0, set maximum voltage to 9.0 V
+// right motor is inversed (i.e, driving forward, RM would be at a negative percent)
+
 FEHMotor left_motor(FEHMotor::Motor0, 9.0);
 FEHMotor right_motor(FEHMotor::Motor3, 9.0);
 
 int main()
 {
-    DigitalInputPin fl(FEHIO::P0_0);
-    DigitalInputPin bl(FEHIO::P0_1);
-    DigitalInputPin fr(FEHIO::P3_7);
-    DigitalInputPin br(FEHIO::P3_6);
+    // DigitalInputPin fl(FEHIO::P0_0);
+    // DigitalInputPin bl(FEHIO::P0_1);
+    // DigitalInputPin fr(FEHIO::P3_7);
+    // DigitalInputPin br(FEHIO::P3_6);
 
     while (bl.Value())
         ;
@@ -67,11 +70,29 @@ int main()
     right_motor.Stop();
 }
 
-drive_forward(double time, int percent)
+driveForward(double time, int percent)
 {
     left_motor.SetPercent(percent);
     right_motor.SetPercent(-percent);
     Sleep(time);
+    left_motor.SetPercent(0);
+    right_motor.SetPercent(0);
+}
+
+turn(int degrees)
+{
+    if (degrees > 0)
+    {
+        left_motor.SetPercent(20);
+        right_motor.SetPercent(20);
+        Sleep(0.03 * degrees);
+    }
+    else
+    {
+        left_motor.SetPercent(-20);
+        right_motor.SetPercent(-20);
+        Sleep(0.03 * degrees)
+    }
     left_motor.SetPercent(0);
     right_motor.SetPercent(0);
 }
