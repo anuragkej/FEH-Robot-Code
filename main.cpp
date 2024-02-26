@@ -67,8 +67,11 @@ int main()
     right_motor.Stop();
 }
 
-drive_forward(int distance)
+drive_forward(double time, int percent)
 {
-    left_motor.SetPercent(40);
-    right_motor.SetPercent(40);
+    left_motor.SetPercent(percent);
+    right_motor.SetPercent(-percent);
+    Sleep(time);
+    left_motor.SetPercent(0);
+    right_motor.SetPercent(0);
 }
