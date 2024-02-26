@@ -75,8 +75,8 @@ driveForward(double time, int percent)
     left_motor.SetPercent(percent);
     right_motor.SetPercent(-percent);
     Sleep(time);
-    left_motor.SetPercent(0);
-    right_motor.SetPercent(0);
+    left_motor.SetPercent(10);
+    right_motor.SetPercent(10);
 }
 
 turn(int degrees)
