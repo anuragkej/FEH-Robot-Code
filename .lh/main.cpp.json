@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 3,
+            "activePatchIndex": 4,
             "patches": [
                 {
                     "date": 1708716708385,
@@ -20,6 +20,10 @@
                 {
                     "date": 1708716847791,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -64,141 +64,5 @@\n         ;\n \n     left_motor.Stop();\n     right_motor.Stop();\n-}\n-#include <FEHUtility.h>\n-#include <FEHMotor.h>\n-#include <FEHIO.h>\n-#include <FEHLCD.h>\n-#include <FEHServo.h>\n-// declare motor on motor port 0, set maximum voltage to 9.0 V\n-FEHMotor left_motor(FEHMotor::Motor0, 9.0);\n-FEHMotor right_motor(FEHMotor::Motor3, 9.0);\n-\n-int main()\n-{\n-    DigitalInputPin fl(FEHIO::P0_0);\n-    DigitalInputPin bl(FEHIO::P0_1);\n-    DigitalInputPin fr(FEHIO::P3_7);\n-    DigitalInputPin br(FEHIO::P3_6);\n-\n-    while (bl.Value())\n-        ;\n-\n-    left_motor.SetPercent(39);\n-    right_motor.SetPercent(-39);\n-\n-    while (fl.Value() || fr.Value())\n-        ;\n-\n-    left_motor.Stop();\n-    right_motor.Stop();\n-\n-    Sleep(2.0);\n-\n-    right_motor.SetPercent(39);\n-\n-    while (br.Value() || bl.Value())\n-        ;\n-\n-    right_motor.Stop();\n-\n-    Sleep(2.0);\n-\n-    left_motor.SetPercent(39);\n-    right_motor.SetPercent(-39);\n-\n-    while (fl.Value() || fr.Value())\n-        ;\n-\n-    left_motor.Stop();\n-    right_motor.Stop();\n-\n-    Sleep(2.0);\n-\n-    left_motor.SetPercent(-39);\n-\n-    while (br.Value() || bl.Value())\n-        ;\n-\n-    left_motor.Stop();\n-\n-    Sleep(2.0);\n-\n-    left_motor.SetPercent(39);\n-    right_motor.SetPercent(-39);\n-\n-    while (fl.Value() || fr.Value())\n-        ;\n-\n-    left_motor.Stop();\n-    right_motor.Stop();\n-}\n-#include <FEHUtility.h>\n-#include <FEHMotor.h>\n-#include <FEHIO.h>\n-#include <FEHLCD.h>\n-#include <FEHServo.h>\n-// declare motor on motor port 0, set maximum voltage to 9.0 V\n-FEHMotor left_motor(FEHMotor::Motor0, 9.0);\n-FEHMotor right_motor(FEHMotor::Motor3, 9.0);\n-\n-int main()\n-{\n-    DigitalInputPin fl(FEHIO::P0_0);\n-    DigitalInputPin bl(FEHIO::P0_1);\n-    DigitalInputPin fr(FEHIO::P3_7);\n-    DigitalInputPin br(FEHIO::P3_6);\n-\n-    while (bl.Value())\n-        ;\n-\n-    left_motor.SetPercent(39);\n-    right_motor.SetPercent(-39);\n-\n-    while (fl.Value() || fr.Value())\n-        ;\n-\n-    left_motor.Stop();\n-    right_motor.Stop();\n-\n-    Sleep(2.0);\n-\n-    right_motor.SetPercent(39);\n-\n-    while (br.Value() || bl.Value())\n-        ;\n-\n-    right_motor.Stop();\n-\n-    Sleep(2.0);\n-\n-    left_motor.SetPercent(39);\n-    right_motor.SetPercent(-39);\n-\n-    while (fl.Value() || fr.Value())\n-        ;\n-\n-    left_motor.Stop();\n-    right_motor.Stop();\n-\n-    Sleep(2.0);\n-\n-    left_motor.SetPercent(-39);\n-\n-    while (br.Value() || bl.Value())\n-        ;\n-\n-    left_motor.Stop();\n-\n-    Sleep(2.0);\n-\n-    left_motor.SetPercent(39);\n-    right_motor.SetPercent(-39);\n-\n-    while (fl.Value() || fr.Value())\n-        ;\n-\n-    left_motor.Stop();\n-    right_motor.Stop();\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1708973045705,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -64,5 +64,10 @@\n         ;\n \n     left_motor.Stop();\n     right_motor.Stop();\n-}\n\\ No newline at end of file\n+}\n+\n+    drive_forward(int distance){\n+        left_motor.SetPercent(40);\n+        right_motor.SetPercent(40);\n+    }\n\\ No newline at end of file\n"
                 }
             ],
             "date": 1708716708385,
