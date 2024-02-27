@@ -91,7 +91,7 @@ turn(int degrees)
     {
         left_motor.SetPercent(-20);
         right_motor.SetPercent(-20);
-        Sleep(0.03 * degrees)
+        Sleep(0.03 * degrees);
     }
     left_motor.SetPercent(0);
     right_motor.SetPercent(0);
