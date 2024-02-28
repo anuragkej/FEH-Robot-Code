@@ -19,6 +19,8 @@ int main()
     // // DigitalInputPin fr(FEHIO::P3_7);
     // // DigitalInputPin br(FEHIO::P3_6);
 
+    AnalogInputPin light(FEHIO::P2_8);
+
     // while (bl.Value())
     //     ;
 
@@ -71,7 +73,11 @@ int main()
     // left_motor.Stop();
     // right_motor.Stop();
 
-    driveForward(8.0, 40);
+    float lightVal = light.value();
+    if (lightVal > 0.01 && lightVal < 0.5)
+    {
+        driveForward(8.0, 40);
+    }
 }
 
 driveForward(double time, int percent)
