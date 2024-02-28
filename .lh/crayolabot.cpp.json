@@ -1,0 +1,26 @@
+{
+    "sourceFile": "crayolabot.cpp",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1709147100256,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1709147152881,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,8 +4,9 @@\n #include <FEHLCD.h>\n #include <FEHServo.h>\n \n void driveForward(double time, int percent);\n+void turn(int degrees);\n // declare motor on motor port 0, set maximum voltage to 9.0 V\n // right motor is inversed (i.e, driving forward, RM would be at a negative percent)\n \n FEHMotor leftM(FEHMotor::Motor2, 9.0);\n@@ -76,8 +77,9 @@\n     // if (lightVal > 0.01 && lightVal < 0.5)\n     // {\n     //     driveForward(8.0, 40);\n     // }\n+    turn(45);\n     driveForward(5.0, 30);\n }\n \n void driveForward(double time, int percent)\n@@ -88,21 +90,21 @@\n     leftM.SetPercent(10);\n     rightM.SetPercent(10);\n }\n \n-// void turn(int degrees)\n-// {\n-//     if (degrees > 0)\n-//     {\n-//         left_motor.SetPercent(20);\n-//         right_motor.SetPercent(20);\n-//         Sleep(0.03 * degrees);\n-//     }\n-//     else\n-//     {\n-//         left_motor.SetPercent(-20);\n-//         right_motor.SetPercent(-20);\n-//         Sleep(0.03 * degrees);\n-//     }\n-//     left_motor.SetPercent(0);\n-//     right_motor.SetPercent(0);\n-// }\n+void turn(int degrees)\n+{\n+    if (degrees > 0)\n+    {\n+        leftM.SetPercent(20);\n+        rightM.SetPercent(20);\n+        Sleep(0.03 * degrees);\n+    }\n+    else\n+    {\n+        leftM.SetPercent(-20);\n+        rightM.SetPercent(-20);\n+        Sleep(0.03 * degrees);\n+    }\n+    leftM.SetPercent(0);\n+    rightM.SetPercent(0);\n+}\n"
+                },
+                {
+                    "date": 1709147171921,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -71,14 +71,15 @@\n     //     ;\n \n     // left_motor.Stop();\n     // right_motor.Stop();\n-\n-    // float lightVal = light.Value();\n-    // if (lightVal > 0.01 && lightVal < 0.5)\n-    // {\n-    //     driveForward(8.0, 40);\n-    // }\n+    while (1){}\n+    float lightVal = light.Value();\n+    if (lightVal > 0.01 && lightVal < 0.5)\n+    {\n+        driveForward(8.0, 40);\n+    }\n+}\n     turn(45);\n     driveForward(5.0, 30);\n }\n \n"
+                }
+            ],
+            "date": 1709147100256,
+            "name": "Commit-0",
+            "content": "#include <FEHUtility.h>\n#include <FEHMotor.h>\n#include <FEHIO.h>\n#include <FEHLCD.h>\n#include <FEHServo.h>\n\nvoid driveForward(double time, int percent);\n// declare motor on motor port 0, set maximum voltage to 9.0 V\n// right motor is inversed (i.e, driving forward, RM would be at a negative percent)\n\nFEHMotor leftM(FEHMotor::Motor2, 9.0);\nFEHMotor rightM(FEHMotor::Motor1, 9.0);\n\nint main()\n{\n    // // DigitalInputPin fl(FEHIO::P0_0);\n    // // DigitalInputPin bl(FEHIO::P0_1);\n    // // DigitalInputPin fr(FEHIO::P3_7);\n    // // DigitalInputPin br(FEHIO::P3_6);\n\n    AnalogInputPin light(FEHIO::P2_7);\n\n    // while (bl.Value())\n    //     ;\n\n    // left_motor.SetPercent(39);\n    // right_motor.SetPercent(-39);\n\n    // while (fl.Value() || fr.Value())\n    //     ;\n\n    // left_motor.Stop();\n    // right_motor.Stop();\n\n    // Sleep(2.0);\n\n    // right_motor.SetPercent(39);\n\n    // while (br.Value() || bl.Value())\n    //     ;\n\n    // right_motor.Stop();\n\n    // Sleep(2.0);\n\n    // left_motor.SetPercent(39);\n    // right_motor.SetPercent(-39);\n\n    // while (fl.Value() || fr.Value())\n    //     ;\n\n    // left_motor.Stop();\n    // right_motor.Stop();\n\n    // Sleep(2.0);\n\n    // left_motor.SetPercent(-39);\n\n    // while (br.Value() || bl.Value())\n    //     ;\n\n    // left_motor.Stop();\n\n    // Sleep(2.0);\n\n    // left_motor.SetPercent(39);\n    // right_motor.SetPercent(-39);\n\n    // while (fl.Value() || fr.Value())\n    //     ;\n\n    // left_motor.Stop();\n    // right_motor.Stop();\n\n    // float lightVal = light.Value();\n    // if (lightVal > 0.01 && lightVal < 0.5)\n    // {\n    //     driveForward(8.0, 40);\n    // }\n    driveForward(5.0, 30);\n}\n\nvoid driveForward(double time, int percent)\n{\n    leftM.SetPercent(percent);\n    rightM.SetPercent(-percent);\n    \n    Sleep(time);\n    leftM.SetPercent(10);\n    rightM.SetPercent(10);\n    \n}\n\n// void turn(int degrees)\n// {\n//     if (degrees > 0)\n//     {\n//         left_motor.SetPercent(20);\n//         right_motor.SetPercent(20);\n//         Sleep(0.03 * degrees);\n//     }\n//     else\n//     {\n//         left_motor.SetPercent(-20);\n//         right_motor.SetPercent(-20);\n//         Sleep(0.03 * degrees);\n//     }\n//     left_motor.SetPercent(0);\n//     right_motor.SetPercent(0);\n// }\n"
+        }
+    ]
+}
