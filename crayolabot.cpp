@@ -72,15 +72,13 @@ int main()
 
     // left_motor.Stop();
     // right_motor.Stop();
-    while (1)
+    float lightVal = light.Value();
+    while (lightVal < 0.01 || lightVal > 0.5)
     {
-        float lightVal = light.Value();
-        if (lightVal > 0.01 && lightVal < 0.5)
-        {
-            turn(45);
-            driveForward(8.0, 40);
-        }
-    }
+    };
+
+    turn(45);
+    driveForward(8.0, 40);
 }
 
 void driveForward(double time, int percent)
