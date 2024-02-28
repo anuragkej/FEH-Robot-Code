@@ -4,7 +4,7 @@
 #include <FEHLCD.h>
 #include <FEHServo.h>
 
-int main
+int main()
 {
     AnalogInputPin light(FEHIO::P2_7);
     while (1)
