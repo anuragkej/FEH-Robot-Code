@@ -73,14 +73,14 @@ int main()
     // left_motor.Stop();
     // right_motor.Stop();
 
-    float lightVal = light.value();
+    float lightVal = light.Value();
     if (lightVal > 0.01 && lightVal < 0.5)
     {
         driveForward(8.0, 40);
     }
 }
 
-driveForward(double time, int percent)
+void driveForward(double time, int percent)
 {
     frm.SetPercent(percent);
     flm.SetPercent(-percent);
@@ -89,20 +89,20 @@ driveForward(double time, int percent)
     flm.SetPercent(10);
 }
 
-turn(int degrees)
-{
-    if (degrees > 0)
-    {
-        left_motor.SetPercent(20);
-        right_motor.SetPercent(20);
-        Sleep(0.03 * degrees);
-    }
-    else
-    {
-        left_motor.SetPercent(-20);
-        right_motor.SetPercent(-20);
-        Sleep(0.03 * degrees);
-    }
-    left_motor.SetPercent(0);
-    right_motor.SetPercent(0);
-}
+// void turn(int degrees)
+// {
+//     if (degrees > 0)
+//     {
+//         left_motor.SetPercent(20);
+//         right_motor.SetPercent(20);
+//         Sleep(0.03 * degrees);
+//     }
+//     else
+//     {
+//         left_motor.SetPercent(-20);
+//         right_motor.SetPercent(-20);
+//         Sleep(0.03 * degrees);
+//     }
+//     left_motor.SetPercent(0);
+//     right_motor.SetPercent(0);
+// }
