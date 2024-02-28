@@ -79,15 +79,16 @@ int main()
     // {
     //     driveForward(8.0, 40);
     // }
-    driveForward(5.0, 30);
+    driveForward(5.0, 50);
+    turn(30);
 }
 
 void driveForward(double time, int percent)
 {
     frm.SetPercent(percent);
-    flm.SetPercent(-percent);
+    flm.SetPercent(percent);
     brm.SetPercent(percent);
-    blm.SetPercent(-percent);
+    blm.SetPercent(percent);
     Sleep(time);
     frm.SetPercent(10);
     flm.SetPercent(10);
@@ -95,20 +96,20 @@ void driveForward(double time, int percent)
     blm.SetPercent(10);
 }
 
-// void turn(int degrees)
-// {
-//     if (degrees > 0)
-//     {
-//         left_motor.SetPercent(20);
-//         right_motor.SetPercent(20);
-//         Sleep(0.03 * degrees);
-//     }
-//     else
-//     {
-//         left_motor.SetPercent(-20);
-//         right_motor.SetPercent(-20);
-//         Sleep(0.03 * degrees);
-//     }
-//     left_motor.SetPercent(0);
-//     right_motor.SetPercent(0);
-// }
+void turn(int degrees)
+{
+    if (degrees > 0)
+    {
+        flm.SetPercent(20);
+        frm.SetPercent(-20);
+        Sleep(0.01 * degrees);
+    }
+    else
+    {
+        flm.SetPercent(-20);
+        frm.SetPercent(20);
+        Sleep(0.01 * degrees);
+    }
+    left_motor.SetPercent(0);
+    right_motor.SetPercent(0);
+}
