@@ -7,10 +7,10 @@
 // declare motor on motor port 0, set maximum voltage to 9.0 V
 // right motor is inversed (i.e, driving forward, RM would be at a negative percent)
 
-FEHMotor blm(FEHMotor::Motor0, 9.0);
+FEHMotor blm(FEHMotor::Motor2, 9.0);
 FEHMotor brm(FEHMotor::Motor3, 9.0);
-FEHMotor flm(FEHMotor::Motor1, 9.0);
-FEHMotor frm(FEHMotor::Motor2, 9.0);
+FEHMotor flm(FEHMotor::Motor0, 9.0);
+FEHMotor frm(FEHMotor::Motor1, 9.0);
 
 int main()
 {
@@ -76,11 +76,11 @@ int main()
 
 driveForward(double time, int percent)
 {
-    brm.SetPercent(percent);
-    blm.SetPercent(-percent);
+    frm.SetPercent(percent);
+    flm.SetPercent(-percent);
     Sleep(time);
-    brm.SetPercent(10);
-    blm.SetPercent(10);
+    frm.SetPercent(10);
+    flm.SetPercent(10);
 }
 
 turn(int degrees)
