@@ -4,13 +4,14 @@
 #include <FEHLCD.h>
 #include <FEHServo.h>
 
+void driveForward(double time, int percent);
 // declare motor on motor port 0, set maximum voltage to 9.0 V
 // right motor is inversed (i.e, driving forward, RM would be at a negative percent)
 
-FEHMotor blm(FEHMotor::Motor2, 9.0);
-FEHMotor brm(FEHMotor::Motor3, 9.0);
-FEHMotor flm(FEHMotor::Motor0, 9.0);
-FEHMotor frm(FEHMotor::Motor1, 9.0);
+FEHMotor blm(FEHMotor::Motor2, 7.0);
+FEHMotor brm(FEHMotor::Motor1, 7.0);
+FEHMotor flm(FEHMotor::Motor3, 7.0);
+FEHMotor frm(FEHMotor::Motor0, 7.0);
 
 int main()
 {
@@ -19,7 +20,7 @@ int main()
     // // DigitalInputPin fr(FEHIO::P3_7);
     // // DigitalInputPin br(FEHIO::P3_6);
 
-    AnalogInputPin light(FEHIO::P2_8);
+    AnalogInputPin light(FEHIO::P2_7);
 
     // while (bl.Value())
     //     ;
@@ -73,20 +74,25 @@ int main()
     // left_motor.Stop();
     // right_motor.Stop();
 
-    float lightVal = light.Value();
-    if (lightVal > 0.01 && lightVal < 0.5)
-    {
-        driveForward(8.0, 40);
-    }
+    // float lightVal = light.Value();
+    // if (lightVal > 0.01 && lightVal < 0.5)
+    // {
+    //     driveForward(8.0, 40);
+    // }
+    driveForward(5.0, 30);
 }
 
 void driveForward(double time, int percent)
 {
     frm.SetPercent(percent);
     flm.SetPercent(-percent);
+    brm.SetPercent(percent);
+    blm.SetPercent(-percent);
     Sleep(time);
     frm.SetPercent(10);
     flm.SetPercent(10);
+    brm.SetPercent(10);
+    blm.SetPercent(10);
 }
 
 // void turn(int degrees)
