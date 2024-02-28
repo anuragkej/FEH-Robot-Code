@@ -10,5 +10,7 @@ int main()
     while (1)
     {
         LCD.Write(light.Value());
+        Sleep(100);
+        LCD.Clear();
     }
 }
