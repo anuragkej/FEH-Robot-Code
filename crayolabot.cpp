@@ -98,13 +98,13 @@ void turn(int degrees)
     {
         leftM.SetPercent(-20);
         rightM.SetPercent(20);
-        Sleep(0.03 * degrees);
+        Sleep(0.01 * degrees);
     }
     else
     {
         leftM.SetPercent(20);
         rightM.SetPercent(-20);
-        Sleep(0.03 * degrees);
+        Sleep(0.01 * degrees);
     }
     leftM.SetPercent(0);
     rightM.SetPercent(0);
