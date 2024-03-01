@@ -4,14 +4,15 @@
 #include <FEHLCD.h>
 #include <FEHServo.h>
 
-void driveForward(double time, int percent);
+void driveForward(float time, int percent);
+void turn(char direction, float time, int dominant_motor_percent, int nondom_motor_percent);
 // declare motor on motor port 0, set maximum voltage to 9.0 V
 // right motor is inversed (i.e, driving forward, RM would be at a negative percent)
 
-FEHMotor blm(FEHMotor::Motor2, 7.0);
-FEHMotor brm(FEHMotor::Motor1, 7.0);
-FEHMotor flm(FEHMotor::Motor3, 7.0);
-FEHMotor frm(FEHMotor::Motor0, 7.0);
+FEHMotor blm(FEHMotor::Motor1, 7.0);
+FEHMotor brm(FEHMotor::Motor3, 7.0);
+FEHMotor flm(FEHMotor::Motor0, 7.0);
+FEHMotor frm(FEHMotor::Motor2, 7.0);
 
 int main()
 {
@@ -22,94 +23,84 @@ int main()
 
     AnalogInputPin light(FEHIO::P2_7);
 
-    // while (bl.Value())
-    //     ;
+    while (light.Value() > 0.9)
+        ;
 
-    // left_motor.SetPercent(39);
-    // right_motor.SetPercent(-39);
+    // forward out of start
+    driveForward(0.6, 100);
 
-    // while (fl.Value() || fr.Value())
-    //     ;
+    // slight left
+    turn('L', 0.5, 100, 25);
 
-    // left_motor.Stop();
-    // right_motor.Stop();
+    // horziontally towrads ramp
+    driveForward(1.1, 100);
 
-    // Sleep(2.0);
+    // 90 degree turn
+    turn('R', 0.6, 100, -100);
 
-    // right_motor.SetPercent(39);
+    // up ramp
+    driveForward(2.0, 100);
 
-    // while (br.Value() || bl.Value())
-    //     ;
+    // slight right
+    turn('R', 0.45, 100, -50);
 
-    // right_motor.Stop();
+    // drive to boarding pass station
+    driveForward(1.2, 100);
 
-    // Sleep(2.0);
+    // slight left
+    turn('L', 0.45, 100, -50);
 
-    // left_motor.SetPercent(39);
-    // right_motor.SetPercent(-39);
+    // drive to boarding pass station
+    driveForward(0.55, 100);
 
-    // while (fl.Value() || fr.Value())
-    //     ;
+    // back up
+    driveForward(1.55, -100);
 
-    // left_motor.Stop();
-    // right_motor.Stop();
+    // wide right
+    turn('R', 2.25, 100, -25);
 
-    // Sleep(2.0);
+    // drive towards ramp
+    driveForward(0.6, 100);
 
-    // left_motor.SetPercent(-39);
+    // slight right to readjust down ramp
+    turn('R', 0.2, 100, -100);
 
-    // while (br.Value() || bl.Value())
-    //     ;
-
-    // left_motor.Stop();
-
-    // Sleep(2.0);
-
-    // left_motor.SetPercent(39);
-    // right_motor.SetPercent(-39);
-
-    // while (fl.Value() || fr.Value())
-    //     ;
-
-    // left_motor.Stop();
-    // right_motor.Stop();
-
-    // float lightVal = light.Value();
-    // if (lightVal > 0.01 && lightVal < 0.5)
-    // {
-    //     driveForward(8.0, 40);
-    // }
-    driveForward(5.0, 50);
-    turn(30);
+    // go down ramp
+    driveForward(2.0, 100);
 }
 
-void driveForward(double time, int percent)
+void driveForward(float time, int percent)
 {
     frm.SetPercent(percent);
     flm.SetPercent(percent);
     brm.SetPercent(percent);
     blm.SetPercent(percent);
     Sleep(time);
-    frm.SetPercent(10);
-    flm.SetPercent(10);
-    brm.SetPercent(10);
-    blm.SetPercent(10);
+    frm.SetPercent(0);
+    flm.SetPercent(0);
+    brm.SetPercent(0);
+    blm.SetPercent(0);
 }
 
-void turn(int degrees)
+void turn(char direction, float time, int dominant_motor_percent, int nondom_motor_percent)
 {
-    if (degrees > 0)
+    if (direction == 'L')
     {
-        flm.SetPercent(20);
-        frm.SetPercent(-20);
-        Sleep(0.01 * degrees);
+        frm.SetPercent(dominant_motor_percent);
+        flm.SetPercent(nondom_motor_percent);
+        brm.SetPercent(dominant_motor_percent);
+        blm.SetPercent(nondom_motor_percent);
     }
-    else
+    else if (direction == 'R')
     {
-        flm.SetPercent(-20);
-        frm.SetPercent(20);
-        Sleep(0.01 * degrees);
+        frm.SetPercent(nondom_motor_percent);
+        flm.SetPercent(dominant_motor_percent);
+        brm.SetPercent(nondom_motor_percent);
+        blm.SetPercent(dominant_motor_percent);
     }
-    left_motor.SetPercent(0);
-    right_motor.SetPercent(0);
+    Sleep(time);
+    frm.SetPercent(0);
+    flm.SetPercent(0);
+    brm.SetPercent(0);
+    blm.SetPercent(0);
 }
