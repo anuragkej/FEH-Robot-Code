@@ -16,6 +16,7 @@ FEHMotor frm(FEHMotor::Motor2, 7.0);
 
 int main()
 {
+    float button = 2.5;
     // // DigitalInputPin fl(FEHIO::P0_0);
     // // DigitalInputPin bl(FEHIO::P0_1);
     // // DigitalInputPin fr(FEHIO::P3_7);
@@ -33,40 +34,111 @@ int main()
     turn('L', 0.5, 100, 25);
 
     // horziontally towrads ramp
-    driveForward(1.1, 100);
+    driveForward(0.9, 100);
 
     // 90 degree turn
-    turn('R', 0.6, 100, -100);
+    turn('R', 0.565, 100, -100);
 
     // up ramp
     driveForward(2.0, 100);
 
     // slight right
-    turn('R', 0.45, 100, -50);
+    turn('R', 0.26, 100, -50);
 
-    // drive to boarding pass station
+    /*// drive to boarding pass station
     driveForward(1.2, 100);
 
     // slight left
-    turn('L', 0.45, 100, -50);
+    turn('L', 0.15, 100, -50);*/
 
-    // drive to boarding pass station
-    driveForward(0.55, 100);
+    frm.SetPercent(25);
+    flm.SetPercent(25);
+    brm.SetPercent(25);
+    blm.SetPercent(25);
+
+    while (light.Value() > 2.0)
+        ;
+
+    float t = TimeNow();
+
+    while (light.Value() < 1.7)
+    {
+
+        frm.SetPercent(0);
+        flm.SetPercent(0);
+        brm.SetPercent(0);
+        blm.SetPercent(0);
+
+        button = 1.5;
+
+        if (TimeNow() - t > 2.0)
+        {
+            break;
+        }
+    }
+
+    t = TimeNow();
+
+    while (light.Value() < 1.97)
+    {
+        frm.SetPercent(0);
+        flm.SetPercent(0);
+        brm.SetPercent(0);
+        blm.SetPercent(0);
+
+        button = 1.5;
+
+        if (TimeNow() - t > 2.0)
+        {
+            break;
+        }
+    }
+
+    Sleep(0.5);
+
+    LCD.WriteLine(button);
+
+    if (button < 1.7)
+    {
+        LCD.WriteLine("RED");
+        driveForward(0.4, -100);
+        turn('R', 0.41, 100, -100);
+        driveForward(1.05, 100);
+        turn('L', 0.54, 100, -100);
+        driveForward(0.5, 100);
+    }
+    else
+    {
+        LCD.WriteLine("BLUE");
+        driveForward(0.4, -100);
+        turn('R', 0.41, 100, -100);
+        driveForward(0.63, 100);
+        turn('L', 0.54, 100, -100);
+        driveForward(0.5, 100);
+    }
 
     // back up
-    driveForward(1.55, -100);
+    driveForward(1.5, -100);
 
-    // wide right
-    turn('R', 2.25, 100, -25);
-
-    // drive towards ramp
-    driveForward(0.6, 100);
-
-    // slight right to readjust down ramp
-    turn('R', 0.2, 100, -100);
+    if (button < 1.7)
+    {
+        // wide right
+        turn('R', 0.55, 100, -100);
+        // drive towards ramp
+        driveForward(0.4, 100);
+        turn('R', 0.82, 100, -100);
+    }
+    else
+    {
+        // wide right
+        turn('R', 0.55, 100, -100);
+        // drive towards ramp
+        driveForward(0.98, 100);
+        turn('R', 0.82, 100, -100);
+    }
 
     // go down ramp
-    driveForward(2.0, 100);
+    driveForward(2.3, 100);
 }
 
 void driveForward(float time, int percent)

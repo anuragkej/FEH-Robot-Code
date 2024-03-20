@@ -1,0 +1,18 @@
+{
+    "sourceFile": "lineFollowing.cpp",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1709579835274,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1709579835274,
+            "name": "Commit-0",
+            "content": "#include <FEHUtility.h>\n#include <FEHMotor.h>\n#include <FEHIO.h>\n#include <FEHLCD.h>\n#include <FEHServo.h>\n\nenum LineStates{\n    MIDDLE, RIGHT, LEFT\n};\n\nint main(){\nAnalogInputPin light(FEHIO::P2_7);\nAnalogInputPin rS(FEHIO::P2_4);\nAnalogInputPin mS(FEHIO::P2_5);\nAnalogInputPin lS(FEHIO::P2_6);\n\nFEHMotor leftM(FEHMotor::Motor0, 9.0);\nFEHMotor rightM(FEHMotor::Motor1, 9.0);\n\nint state = MIDDLE; // Set the initial state\n    while (true) { // I will follow this line forever!\n        switch(state) {\n                // If I am in the middle of the line...\n                case MIDDLE: \n                    // Set motor powers for driving straight\n                    /* Drive */\n                    leftM.SetPercent(25);\n                    rightM.SetPercent(25);\n                    if (rS.Value() > 2.2) { \n                            state = RIGHT; // update a new state\n                            \n                    }\n\n                    /* Code for if left sensor is on the line */\n                    if (lS.Value() > 2.0) { \n                            state = LEFT; // update a new state\n\n                    break;\n\n\n                // If the right sensor is on the line...   \n                case RIGHT: \n                    // Set motor powers for right turn\n                    /* Drive */\n                    leftM.SetPercent(25);\n                    rightM.SetPercent(0);\n                    if( rS.Value() < 2.2) {\n                            state = MIDDLE;\n                    }\n                    break;\n\n                // If the left sensor is on the line...   \n                case LEFT: \n                    /* Mirror operation of RIGHT state */\n                    // Set motor powers for right turn\n                    /* Drive */\n                    leftM.SetPercent(0);\n                    rightM.SetPercent(25);\n                    if(lS.Value() < 2.0) {\n                            state = MIDDLE;\n                    }\n                    break;\n\n                default: // Error. Something is very wrong.\n                    break;\n        }\n        Sleep(0.02);\n    }\n\n}\n\n}\n"
+        }
+    ]
+}
