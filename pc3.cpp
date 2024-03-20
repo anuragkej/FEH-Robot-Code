@@ -26,17 +26,17 @@ int main()
     // Check which lever to flip and perform some action
     if (correctLever == 0)
     {
-        driveForward(0.3, 50)
+        driveForward(0.3, 50);
         // Perform actions to flip left lever
     }
     else if (correctLever == 1)
     {
-        driveForward(0.4, 50)
+        driveForward(0.4, 50);
         // Perform actions to flip middle lever
     }
     else if (correctLever == 2)
     {
-        driveForward(0.5, 50)
+        driveForward(0.5, 50);
         // Perform actions to flip right lever
     }
 }
