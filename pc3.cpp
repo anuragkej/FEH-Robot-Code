@@ -35,26 +35,35 @@ int main()
     // slight left
     turn('L', 0.7, 100, 25);
 
-    // horziontally towrads ramp
-    driveForward(0.9, 100);
-
-    // 90 degree turn
-    turn('R', 0.565, 100, -100);
-
     // Check which lever to flip and perform some action
     if (correctLever == 0)
     {
-        driveForward(0.3, 50);
         // Perform actions to flip left lever
+
+        // horziontally towrads ramp
+        driveForward(0.15, 100);
+
+        // 90 degree turn
+        turn('L', 0.565, 100, -100);
     }
     else if (correctLever == 1)
     {
-        driveForward(0.4, 50);
+
+        // horziontally towrads ramp
+        driveForward(0.5, 100);
+
+        // 90 degree turn
+        turn('L', 0.565, 100, -100);
         // Perform actions to flip middle lever
     }
     else if (correctLever == 2)
     {
-        driveForward(0.5, 50);
+
+        // horziontally towrads ramp
+        driveForward(0.6, 100);
+
+        // 90 degree turn
+        turn('L', 0.4, 100, -100);
         // Perform actions to flip right lever
     }
 }
