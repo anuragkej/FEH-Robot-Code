@@ -17,11 +17,29 @@ FEHMotor frm(FEHMotor::Motor2, 7.0);
 
 int main()
 {
+
     // Initialize the RCS
     RCS.InitializeTouchMenu("B7p93noDy");
 
     // Get correct lever from the RCS
     int correctLever = RCS.GetCorrectLever();
+
+    AnalogInputPin light(FEHIO::P2_7);
+
+    while (light.Value() > 0.9)
+        ;
+
+    // forward out of start
+    driveForward(0.8, 100);
+
+    // slight left
+    turn('L', 0.7, 100, 25);
+
+    // horziontally towrads ramp
+    driveForward(0.9, 100);
+
+    // 90 degree turn
+    turn('R', 0.565, 100, -100);
 
     // Check which lever to flip and perform some action
     if (correctLever == 0)
