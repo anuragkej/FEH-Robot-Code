@@ -3,6 +3,7 @@
 #include <FEHIO.h>
 #include <FEHLCD.h>
 #include <FEHServo.h>
+#include <FEHRCS.h>
 
 void driveForward(float time, int percent);
 void turn(char direction, float time, int dominant_motor_percent, int nondom_motor_percent);
@@ -16,4 +17,61 @@ FEHMotor frm(FEHMotor::Motor2, 7.0);
 
 int main()
 {
+    // Initialize the RCS
+    RCS.InitializeTouchMenu("B7p93noDy");
+
+    // Get correct lever from the RCS
+    int correctLever = RCS.GetCorrectLever();
+
+    // Check which lever to flip and perform some action
+    if (correctLever == 0)
+    {
+        driveForward(0.3, 50)
+        // Perform actions to flip left lever
+    }
+    else if (correctLever == 1)
+    {
+        driveForward(0.4, 50)
+        // Perform actions to flip middle lever
+    }
+    else if (correctLever == 2)
+    {
+        driveForward(0.5, 50)
+        // Perform actions to flip right lever
+    }
+}
+void driveForward(float time, int percent)
+{
+    frm.SetPercent(percent);
+    flm.SetPercent(percent);
+    brm.SetPercent(percent);
+    blm.SetPercent(percent);
+    Sleep(time);
+    frm.SetPercent(0);
+    flm.SetPercent(0);
+    brm.SetPercent(0);
+    blm.SetPercent(0);
+}
+
+void turn(char direction, float time, int dominant_motor_percent, int nondom_motor_percent)
+{
+    if (direction == 'L')
+    {
+        frm.SetPercent(dominant_motor_percent);
+        flm.SetPercent(nondom_motor_percent);
+        brm.SetPercent(dominant_motor_percent);
+        blm.SetPercent(nondom_motor_percent);
+    }
+    else if (direction == 'R')
+    {
+        frm.SetPercent(nondom_motor_percent);
+        flm.SetPercent(dominant_motor_percent);
+        brm.SetPercent(nondom_motor_percent);
+        blm.SetPercent(dominant_motor_percent);
+    }
+    Sleep(time);
+    frm.SetPercent(0);
+    flm.SetPercent(0);
+    brm.SetPercent(0);
+    blm.SetPercent(0);
 }
