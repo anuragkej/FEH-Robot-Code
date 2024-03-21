@@ -5,6 +5,9 @@
 #include <FEHServo.h>
 #include <FEHRCS.h>
 
+// Servo Max: 2277
+// Servo Min: 500
+
 int main()
 {
 

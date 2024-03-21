@@ -5,6 +5,9 @@
 #include <FEHServo.h>
 #include <FEHRCS.h>
 
+// Servo Max: 2277
+// Servo Min: 500
+
 void driveForward(float time, int percent);
 void turn(char direction, float time, int dominant_motor_percent, int nondom_motor_percent);
 // declare motor on motor port 0, set maximum voltage to 9.0 V
@@ -23,6 +26,11 @@ int main()
 
     // Get correct lever from the RCS
     int correctLever = RCS.GetCorrectLever();
+
+    FEHServo s1(FEHServo::Servo7);
+
+    s1.SetMin(500);
+    s1.SetMax(2277);
 
     AnalogInputPin light(FEHIO::P2_7);
 
