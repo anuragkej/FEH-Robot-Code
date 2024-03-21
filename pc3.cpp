@@ -69,12 +69,19 @@ int main()
     else if (correctLever == 1)
     {
 
-        // horziontally towrads ramp
-        driveForward(0.5, 100);
+        // horziontally towards ramp
+        driveForward(0.12, 100);
 
-        // 90 degree turn
-        turn('L', 0.565, 100, -100);
-        // Perform actions to flip middle lever
+        /*// 90 degree turn
+        turn('L', 0.75, 100, -100);
+
+        driveForward(0.2, 100);*/
+
+        s1.SetDegree(80);
+
+        Sleep(5.0);
+
+        s1.SetDegree(110);
     }
     else if (correctLever == 2)
     {
