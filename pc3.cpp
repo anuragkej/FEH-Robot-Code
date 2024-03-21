@@ -22,7 +22,7 @@ int main()
 {
 
     // Initialize the RCS
-    RCS.InitializeTouchMenu("B7p93noDy");
+    RCS.InitializeTouchMenu("E6aMLIy03");
 
     // Get correct lever from the RCS
     int correctLever = RCS.GetCorrectLever();
