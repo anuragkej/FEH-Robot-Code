@@ -38,7 +38,7 @@ int main()
         ;
 
     // forward out of start
-    driveForward(1.1, 100);
+    driveForward(1.05, 100);
 
     // slight left
     turn('L', 0.9, 100, 25);
@@ -54,7 +54,7 @@ int main()
         driveForward(0.15, 100);
 
         // 90 degree turn
-        turn('L', 0.565, 100, -100);
+        turn('L', 0.7, 100, -100);
     }
     else if (correctLever == 1)
     {
