@@ -41,7 +41,7 @@ int main()
     driveForward(1.1, 100);
 
     // slight left
-    turn('L', 0.7, 100, 25);
+    turn('L', 0.9, 100, 25);
 
     int correctLever = 0;
 
@@ -63,7 +63,7 @@ int main()
         driveForward(0.5, 100);
 
         // 90 degree turn
-        turn('L', 0.7, 100, -100);
+        turn('L', 0.565, 100, -100);
         // Perform actions to flip middle lever
     }
     else if (correctLever == 2)
