@@ -21,11 +21,11 @@ FEHMotor frm(FEHMotor::Motor2, 7.0);
 int main()
 {
 
-    // Initialize the RCS
+    /*// Initialize the RCS
     RCS.InitializeTouchMenu("E6aMLIy03");
 
     // Get correct lever from the RCS
-    int correctLever = RCS.GetCorrectLever();
+    int correctLever = RCS.GetCorrectLever();*/
 
     FEHServo s1(FEHServo::Servo7);
 
@@ -42,6 +42,8 @@ int main()
 
     // slight left
     turn('L', 0.7, 100, 25);
+
+    int correctLever = 0;
 
     // Check which lever to flip and perform some action
     if (correctLever == 0)
