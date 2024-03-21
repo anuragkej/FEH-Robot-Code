@@ -40,7 +40,7 @@ int main()
     // forward out of start
     driveForward(0.7, 100);
 
-    Sleep(0.5);
+    Sleep(0.25);
 
     // slight left
     turn('L', 0.9, 100, 25);

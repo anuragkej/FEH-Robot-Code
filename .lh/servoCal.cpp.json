@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 4,
+            "activePatchIndex": 5,
             "patches": [
                 {
                     "date": 1711054145619,
@@ -24,6 +24,10 @@
                 {
                     "date": 1711054830773,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,8 +4,11 @@\n #include <FEHLCD.h>\n #include <FEHServo.h>\n #include <FEHRCS.h>\n \n+//Servo Max: 2277\n+//Servo Min: 500\n+\n int main()\n {\n \n     FEHServo s1(FEHServo::Servo7);\n"
+                },
+                {
+                    "date": 1711058375726,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,6 +12,11 @@\n {\n \n     FEHServo s1(FEHServo::Servo7);\n \n-    s1.TouchCalibrate();\n+    s1.SetMin(500);\n+    s1.SetMax(2277);\n+\n+    s1.SetDegree(0);\n+    Sleep(0.5);\n+    s1.SetDegree(180);\n }\n\\ No newline at end of file\n"
                 }
             ],
             "date": 1711054145619,
