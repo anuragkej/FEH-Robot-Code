@@ -1,0 +1,26 @@
+{
+    "sourceFile": "pc3.cpp",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1710958501615,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1710959146674,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,11 @@\n #include <FEHMotor.h>\n #include <FEHIO.h>\n #include <FEHLCD.h>\n #include <FEHServo.h>\n+#include <FEHRCS.h>\n \n+\n void driveForward(float time, int percent);\n void turn(char direction, float time, int dominant_motor_percent, int nondom_motor_percent);\n // declare motor on motor port 0, set maximum voltage to 9.0 V\n // right motor is inversed (i.e, driving forward, RM would be at a negative percent)\n@@ -15,5 +17,24 @@\n FEHMotor frm(FEHMotor::Motor2, 7.0);\n \n int main()\n {\n+    // Initialize the RCS\n+    RCS.InitializeTouchMenu(\"B7p93noDy\");\n+     \n+    // Get correct lever from the RCS\n+    int correctLever = RCS.GetCorrectLever();\n+     \n+    // Check which lever to flip and perform some action\n+    if(correctLever == 0)\n+    {\n+        // Perform actions to flip left lever\n+    } \n+    else if(correctLever == 1)\n+    {\n+        // Perform actions to flip middle lever\n+    }\n+    else if(correctLever == 2)\n+    {\n+       // Perform actions to flip right lever\n+    }\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1710959508490,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,8 +16,10 @@\n FEHMotor frm(FEHMotor::Motor2, 7.0);\n \n int main()\n {\n+\n+\n     // Initialize the RCS\n     RCS.InitializeTouchMenu(\"B7p93noDy\");\n \n     // Get correct lever from the RCS\n@@ -35,5 +37,40 @@\n     else if (correctLever == 2)\n     {\n         // Perform actions to flip right lever\n     }\n+}\n+void driveForward(float time, int percent)\n+{\n+    frm.SetPercent(percent);\n+    flm.SetPercent(percent);\n+    brm.SetPercent(percent);\n+    blm.SetPercent(percent);\n+    Sleep(time);\n+    frm.SetPercent(0);\n+    flm.SetPercent(0);\n+    brm.SetPercent(0);\n+    blm.SetPercent(0);\n+}\n+\n+void turn(char direction, float time, int dominant_motor_percent, int nondom_motor_percent)\n+{\n+    if (direction == 'L')\n+    {\n+        frm.SetPercent(dominant_motor_percent);\n+        flm.SetPercent(nondom_motor_percent);\n+        brm.SetPercent(dominant_motor_percent);\n+        blm.SetPercent(nondom_motor_percent);\n+    }\n+    else if (direction == 'R')\n+    {\n+        frm.SetPercent(nondom_motor_percent);\n+        flm.SetPercent(dominant_motor_percent);\n+        brm.SetPercent(nondom_motor_percent);\n+        blm.SetPercent(dominant_motor_percent);\n+    }\n+    Sleep(time);\n+    frm.SetPercent(0);\n+    flm.SetPercent(0);\n+    brm.SetPercent(0);\n+    blm.SetPercent(0);\n }\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1710958501615,
+            "name": "Commit-0",
+            "content": "#include <FEHUtility.h>\n#include <FEHMotor.h>\n#include <FEHIO.h>\n#include <FEHLCD.h>\n#include <FEHServo.h>\n\nvoid driveForward(float time, int percent);\nvoid turn(char direction, float time, int dominant_motor_percent, int nondom_motor_percent);\n// declare motor on motor port 0, set maximum voltage to 9.0 V\n// right motor is inversed (i.e, driving forward, RM would be at a negative percent)\n\nFEHMotor blm(FEHMotor::Motor1, 7.0);\nFEHMotor brm(FEHMotor::Motor3, 7.0);\nFEHMotor flm(FEHMotor::Motor0, 7.0);\nFEHMotor frm(FEHMotor::Motor2, 7.0);\n\nint main()\n{\n    \n}"
+        }
+    ]
+}
