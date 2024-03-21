@@ -38,7 +38,9 @@ int main()
         ;
 
     // forward out of start
-    driveForward(0.99, 100);
+    driveForward(0.7, 100);
+
+    Sleep(0.5);
 
     // slight left
     turn('L', 0.9, 100, 25);
@@ -53,16 +55,16 @@ int main()
         // horziontally towrads ramp
         driveForward(0.15, 100);
 
-        // 90 degree turn
+        /*// 90 degree turn
         turn('L', 0.75, 100, -100);
 
-        driveForward(0.2, 100);
+        driveForward(0.2, 100);*/
 
-        s1.SetDegree(70);
+        s1.SetDegree(80);
 
         Sleep(5.0);
 
-        s1.Set Degree(110);
+        s1.SetDegree(110);
     }
     else if (correctLever == 1)
     {
