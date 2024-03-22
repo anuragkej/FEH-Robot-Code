@@ -55,12 +55,14 @@ int main()
         // Perform actions to flip left lever
 
         // horziontally towrads ramp
-        driveForward(0.2, -100);
+        driveForward(0.26, -100);
 
         /*// 90 degree turn
         turn('L', 0.75, 100, -100);
 
         driveForward(0.2, 100);*/
+
+        Sleep(0.5);
 
         s1.SetDegree(100);
 
