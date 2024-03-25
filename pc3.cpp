@@ -37,15 +37,15 @@ int main()
     while (light.Value() > 0.9)
         ;
 
+    s1.SetDegree(130);
+
     // forward out of start
     driveForward(0.7, 100);
 
     Sleep(0.25);
 
     // slight left
-    turn('L', 0.9, 100, 25);
-
-    s1.SetDegree(110);
+    turn('L', 0.87, 100, 25);
 
     // Check which lever to flip and perform some action
     if (correctLever == 0)
@@ -53,45 +53,57 @@ int main()
         // Perform actions to flip left lever
 
         // horziontally towrads ramp
-        driveForward(0.15, 100);
+        driveForward(0.26, -100);
 
         /*// 90 degree turn
         turn('L', 0.75, 100, -100);
 
         driveForward(0.2, 100);*/
 
-        s1.SetDegree(80);
+        Sleep(0.5);
+
+        s1.SetDegree(100);
 
         Sleep(5.0);
 
-        s1.SetDegree(110);
+        s1.SetDegree(135);
     }
     else if (correctLever == 1)
     {
 
         // horziontally towards ramp
-        driveForward(0.12, 100);
+        driveForward(0.0625, 100);
 
         /*// 90 degree turn
         turn('L', 0.75, 100, -100);
 
         driveForward(0.2, 100);*/
 
-        s1.SetDegree(80);
+        Sleep(0.5);
+
+        s1.SetDegree(100);
 
         Sleep(5.0);
 
-        s1.SetDegree(110);
+        s1.SetDegree(135);
     }
     else if (correctLever == 2)
     {
+        // horziontally towards ramp
+        driveForward(0.33, 100);
 
-        // horziontally towrads ramp
-        driveForward(0.6, 100);
+        /*// 90 degree turn
+        turn('L', 0.75, 100, -100);
 
-        // 90 degree turn
-        turn('L', 0.4, 100, -100);
-        // Perform actions to flip right lever
+        driveForward(0.2, 100);*/
+
+        Sleep(0.5);
+
+        s1.SetDegree(100);
+
+        Sleep(5.0);
+
+        s1.SetDegree(135);
     }
 }
 void driveForward(float time, int percent)
