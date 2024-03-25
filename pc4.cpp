@@ -41,12 +41,12 @@ int main()
         ;
 
     // forward out of start
-    driveForward(0.7, 85);
+    driveForward(0.7, 100);
 
     Sleep(0.25);
 
     // slight left
-    turn('L', 0.9, 60, 15);
+    turn('L', 0.9, 100, 25);
 
     s1.SetDegree(110);
 
@@ -56,7 +56,7 @@ int main()
         // Perform actions to flip left lever
 
         // horziontally towrads ramp
-        driveForward(0.26, -85);
+        driveForward(0.26, -100);
 
         /*// 90 degree turn
         turn('L', 0.75, 100, -100);
@@ -75,13 +75,13 @@ int main()
 
         s1.SetDegree(110);
 
-        driveForward(0.59, 85);
+        driveForward(0.59, 100);
     }
     else if (correctLever == 1)
     {
 
         // horziontally towards ramp
-        driveForward(0.0625, 85);
+        driveForward(0.0625, 100);
 
         /*// 90 degree turn
         turn('L', 0.75, 100, -100);
@@ -100,12 +100,12 @@ int main()
 
         s1.SetDegree(110);
 
-        driveForward(0.2675, 85);
+        driveForward(0.2675, 100);
     }
     else if (correctLever == 2)
     {
         // horziontally towards ramp
-        driveForward(0.33, 85);
+        driveForward(0.33, 100);
 
         /*// 90 degree turn
         turn('L', 0.75, 100, -100);
@@ -125,15 +125,15 @@ int main()
         s1.SetDegree(110);
     }
 
-    driveForward(0.25, 85);
+    driveForward(0.25, 100);
 
-    turn('R', 0.7, 85, -85);
+    turn('R', 0.7, 100, -100);
 
     // up ramp
-    driveForward(2.0, 85);
+    driveForward(2.0, 100);
 
     // slight right
-    turn('R', 0.26, 85, -35);
+    turn('R', 0.26, 100, -50);
 
     /*// drive to boarding pass station
     driveForward(1.2, 100);
@@ -193,53 +193,53 @@ int main()
     if (button < 0.9)
     {
         LCD.WriteLine("RED");
-        driveForward(0.4, -85);
-        turn('R', 0.41, 85, -85);
-        driveForward(1.05, 85);
-        turn('L', 0.54, 85, -85);
-        driveForward(0.5, 85);
+        driveForward(0.4, -100);
+        turn('R', 0.41, 100, -100);
+        driveForward(1.05, 100);
+        turn('L', 0.54, 100, -100);
+        driveForward(0.5, 100);
     }
     else
     {
         LCD.WriteLine("BLUE");
-        driveForward(0.4, -85);
-        turn('R', 0.41, 85, -85);
-        driveForward(0.63, 85);
-        turn('L', 0.54, 85, -85);
-        driveForward(0.5, 85);
+        driveForward(0.4, -100);
+        turn('R', 0.41, 100, -100);
+        driveForward(0.63, 100);
+        turn('L', 0.54, 100, -100);
+        driveForward(0.5, 100);
     }
 
     // back up
-    driveForward(1.5, -85);
+    driveForward(1.5, -100);
 
     if (button < 0.9)
     {
         // wide right
-        turn('R', 0.55, 85, -85);
+        turn('R', 0.55, 100, -100);
         // drive towards ramp
-        driveForward(0.4, 85);
-        turn('R', 0.82, 85, -85);
+        driveForward(0.4, 100);
+        turn('R', 0.82, 100, -100);
     }
     else
     {
         // wide right
-        turn('R', 0.55, 85, -85);
+        turn('R', 0.55, 100, -100);
         // drive towards ramp
-        driveForward(0.98, 85);
-        turn('R', 0.82, 85, -85);
+        driveForward(0.98, 100);
+        turn('R', 0.82, 100, -100);
     }
 
     // go down ramp
-    driveForward(2.3, 85);
+    driveForward(2.3, 100);
 }
 void driveForward(float time, int percent)
 {
-    float adjustedpercent;
-    adjustedpercent = (11.5 / Battery.Voltage()) * percent;
-    frm.SetPercent(adjustedpercent);
-    flm.SetPercent(adjustedpercent);
-    brm.SetPercent(adjustedpercent);
-    blm.SetPercent(adjustedpercent);
+    /*float adjustedpercent;
+    adjustedpercent = (11.5 / Battery.Voltage()) * percent;*/
+    frm.SetPercent(percent);
+    flm.SetPercent(percent);
+    brm.SetPercent(percent);
+    blm.SetPercent(percent);
     Sleep(time);
     frm.SetPercent(0);
     flm.SetPercent(0);
@@ -250,22 +250,22 @@ void driveForward(float time, int percent)
 void turn(char direction, float time, int dominant_motor_percent, int nondom_motor_percent)
 {
 
-    float adj_dominant_motor_percent = (11.5 / Battery.Voltage()) * dominant_motor_percent;
-    float adj_nondom_motor_percent = (11.5 / Battery.Voltage()) * nondom_motor_percent;
+    /*float adj_dominant_motor_percent = (11.5 / Battery.Voltage()) * dominant_motor_percent;
+    float adj_nondom_motor_percent = (11.5 / Battery.Voltage()) * nondom_motor_percent;*/
 
     if (direction == 'L')
     {
-        frm.SetPercent(adj_dominant_motor_percent);
-        flm.SetPercent(adj_nondom_motor_percent);
-        brm.SetPercent(adj_dominant_motor_percent);
-        blm.SetPercent(adj_nondom_motor_percent);
+        frm.SetPercent(dominant_motor_percent);
+        flm.SetPercent(nondom_motor_percent);
+        brm.SetPercent(dominant_motor_percent);
+        blm.SetPercent(nondom_motor_percent);
     }
     else if (direction == 'R')
     {
-        frm.SetPercent(adj_nondom_motor_percent);
-        flm.SetPercent(adj_dominant_motor_percent);
-        brm.SetPercent(adj_nondom_motor_percent);
-        blm.SetPercent(adj_dominant_motor_percent);
+        frm.SetPercent(nondom_motor_percent);
+        flm.SetPercent(dominant_motor_percent);
+        brm.SetPercent(nondom_motor_percent);
+        blm.SetPercent(dominant_motor_percent);
     }
     Sleep(time);
     frm.SetPercent(0);
