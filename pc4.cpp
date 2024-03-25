@@ -30,6 +30,8 @@ int main()
 
     FEHServo s1(FEHServo::Servo7);
 
+    float button;
+
     s1.SetMin(500);
     s1.SetMax(2277);
 
@@ -249,9 +251,9 @@ void turn(char direction, float time, int dominant_motor_percent, int nondom_mot
 {
 
     float adj_dominant_motor_percent = (11.5 / Battery.Voltage()) * dominant_motor_percent;
-    float adj_nondom_motor_percent = (11.5 / Battery.Voltage()) * nondom_motor_percent
+    float adj_nondom_motor_percent = (11.5 / Battery.Voltage()) * nondom_motor_percent;
 
-                                     if (direction == 'L')
+    if (direction == 'L')
     {
         frm.SetPercent(adj_dominant_motor_percent);
         flm.SetPercent(adj_nondom_motor_percent);
