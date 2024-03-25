@@ -37,15 +37,15 @@ int main()
     while (light.Value() > 0.9)
         ;
 
-    s1.SetDegree(130);
-
     // forward out of start
     driveForward(0.7, 100);
 
     Sleep(0.25);
 
     // slight left
-    turn('L', 0.87, 100, 25);
+    turn('L', 0.9, 100, 25);
+
+    s1.SetDegree(110);
 
     // Check which lever to flip and perform some action
     if (correctLever == 0)
