@@ -48,7 +48,7 @@ int main()
     // slight left
     turn('L', 0.9, 100, 25);
 
-    s1.SetDegree(110);
+    s1.SetDegree(130);
 
     // Check which lever to flip and perform some action
     if (correctLever == 0)
@@ -73,7 +73,7 @@ int main()
 
         Sleep(0.5);
 
-        s1.SetDegree(110);
+        s1.SetDegree(130);
 
         driveForward(0.59, 100);
     }
@@ -98,7 +98,7 @@ int main()
 
         Sleep(0.5);
 
-        s1.SetDegree(110);
+        s1.SetDegree(130);
 
         driveForward(0.2675, 100);
     }
@@ -122,7 +122,7 @@ int main()
 
         Sleep(0.5);
 
-        s1.SetDegree(110);
+        s1.SetDegree(130);
     }
 
     driveForward(0.25, 100);
