@@ -41,7 +41,7 @@ int main()
         ;
 
     // forward out of start
-    driveForward(0.7, 70);
+    driveForward(0.7, 85);
 
     Sleep(0.25);
 
@@ -56,7 +56,7 @@ int main()
         // Perform actions to flip left lever
 
         // horziontally towrads ramp
-        driveForward(0.26, -70);
+        driveForward(0.26, -85);
 
         /*// 90 degree turn
         turn('L', 0.75, 100, -100);
@@ -75,13 +75,13 @@ int main()
 
         s1.SetDegree(110);
 
-        driveForward(0.59, 70);
+        driveForward(0.59, 85);
     }
     else if (correctLever == 1)
     {
 
         // horziontally towards ramp
-        driveForward(0.0625, 70);
+        driveForward(0.0625, 85);
 
         /*// 90 degree turn
         turn('L', 0.75, 100, -100);
@@ -100,12 +100,12 @@ int main()
 
         s1.SetDegree(110);
 
-        driveForward(0.2675, 70);
+        driveForward(0.2675, 85);
     }
     else if (correctLever == 2)
     {
         // horziontally towards ramp
-        driveForward(0.33, 70);
+        driveForward(0.33, 85);
 
         /*// 90 degree turn
         turn('L', 0.75, 100, -100);
@@ -125,15 +125,15 @@ int main()
         s1.SetDegree(110);
     }
 
-    driveForward(0.25, 70);
+    driveForward(0.25, 85);
 
-    turn('R', 0.7, 70, -70);
+    turn('R', 0.7, 85, -85);
 
     // up ramp
-    driveForward(2.0, 70);
+    driveForward(2.0, 85);
 
     // slight right
-    turn('R', 0.26, 70, -35);
+    turn('R', 0.26, 85, -35);
 
     /*// drive to boarding pass station
     driveForward(1.2, 100);
@@ -193,44 +193,44 @@ int main()
     if (button < 0.9)
     {
         LCD.WriteLine("RED");
-        driveForward(0.4, -70);
-        turn('R', 0.41, 70, -70);
-        driveForward(1.05, 70);
-        turn('L', 0.54, 70, -70);
-        driveForward(0.5, 70);
+        driveForward(0.4, -85);
+        turn('R', 0.41, 85, -85);
+        driveForward(1.05, 85);
+        turn('L', 0.54, 85, -85);
+        driveForward(0.5, 85);
     }
     else
     {
         LCD.WriteLine("BLUE");
-        driveForward(0.4, -70);
-        turn('R', 0.41, 70, -70);
-        driveForward(0.63, 70);
-        turn('L', 0.54, 70, -70);
-        driveForward(0.5, 70);
+        driveForward(0.4, -85);
+        turn('R', 0.41, 85, -85);
+        driveForward(0.63, 85);
+        turn('L', 0.54, 85, -85);
+        driveForward(0.5, 85);
     }
 
     // back up
-    driveForward(1.5, -70);
+    driveForward(1.5, -85);
 
     if (button < 0.9)
     {
         // wide right
-        turn('R', 0.55, 70, -70);
+        turn('R', 0.55, 85, -85);
         // drive towards ramp
-        driveForward(0.4, 70);
-        turn('R', 0.82, 70, -70);
+        driveForward(0.4, 85);
+        turn('R', 0.82, 85, -85);
     }
     else
     {
         // wide right
-        turn('R', 0.55, 70, -70);
+        turn('R', 0.55, 85, -85);
         // drive towards ramp
-        driveForward(0.98, 70);
-        turn('R', 0.82, 70, -70);
+        driveForward(0.98, 85);
+        turn('R', 0.82, 85, -85);
     }
 
     // go down ramp
-    driveForward(2.3, 70);
+    driveForward(2.3, 85);
 }
 void driveForward(float time, int percent)
 {
