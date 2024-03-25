@@ -127,7 +127,7 @@ int main()
 
     driveForward(0.25, 100);
 
-    turn('R', 0.7, 100, -100);
+    turn('R', 0.75, 100, -100);
 
     // up ramp
     driveForward(2.0, 100);
