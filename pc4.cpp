@@ -27,6 +27,11 @@ int main()
     FEHServo s1(FEHServo::Servo6);
     FEHServo s2(FEHServo::Servo7);
 
+    AnalogInputPin light(FEHIO::P2_7);
+
+    while (light.Value() > 0.9)
+        ;
+
     s2.SetDegree(90);
 
     turn('R', 0.7, 80, 25);
@@ -37,16 +42,14 @@ int main()
     driveForward(1.2, 100);
     turn('R', 1.0, 80, 25);
     Sleep(0.5);
-    driveForward(0.15,50);
-    turn('L',0.8,100,-100);
+    driveForward(0.15, 50);
+    turn('L', 0.8, 100, -100);
     s2.SetDegree(130);
     Sleep(0.5);
-    driveForward(0.5,-100);
+    driveForward(0.5, -100);
     s2.SetDegree(70);
     Sleep(0.5);
     s2.SetDegree(130);
-
-
 }
 void driveForward(float time, int percent)
 {
