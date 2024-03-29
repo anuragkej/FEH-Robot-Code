@@ -47,7 +47,7 @@ int main()
     s2.SetDegree(150);
     Sleep(0.5);
     driveForward(0.5, -100);
-    s2.SetDegree(85);
+    s2.SetDegree(55);
     Sleep(0.5);
     s2.SetDegree(150);
 }
