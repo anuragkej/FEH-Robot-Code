@@ -44,12 +44,12 @@ int main()
     Sleep(0.5);
     driveForward(0.15, 50);
     turn('L', 0.8, 100, -100);
-    s2.SetDegree(140);
+    s2.SetDegree(150);
     Sleep(0.5);
     driveForward(0.5, -100);
     s2.SetDegree(70);
     Sleep(0.5);
-    s2.SetDegree(140);
+    s2.SetDegree(150);
 }
 void driveForward(float time, int percent)
 {
