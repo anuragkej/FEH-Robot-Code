@@ -46,7 +46,8 @@ int main()
     turn('L', 0.8, 100, -100);
     s2.SetDegree(150);
     Sleep(0.5);
-    driveForward(0.4, -100);
+    driveForward(0.5, -100);
+    driveForward(0.15, 25);
     s2.SetDegree(55);
     Sleep(0.5);
     s2.SetDegree(150);
