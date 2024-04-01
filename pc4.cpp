@@ -24,6 +24,8 @@ FEHMotor frm(FEHMotor::Motor2, 7.0);
 
 int main()
 {
+    RCS.InitializeTouchMenu("E6aMLIy03");
+
     FEHServo s1(FEHServo::Servo6);
     FEHServo s2(FEHServo::Servo7);
 
@@ -32,6 +34,8 @@ int main()
     while (light.Value() > 0.9)
         ;
 
+    // reset servo motors
+    s1.SetDegree(180);
     s2.SetDegree(90);
 
     turn('R', 0.7, 80, 25);
