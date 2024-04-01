@@ -56,7 +56,9 @@ int main()
     // slight right
     turn('R', 0.26, 100, -50);
 
- 
+    turn('R', 0.7, 100, -100);
+
+    driveForward(1.2, 100);
 
     // turn('R', 0.7, 80, 25);
     // driveForward(0.3, 100);
