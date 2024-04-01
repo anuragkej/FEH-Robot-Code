@@ -38,23 +38,43 @@ int main()
     s1.SetDegree(180);
     s2.SetDegree(90);
 
-    turn('R', 0.7, 80, 25);
-    driveForward(0.3, 100);
-    turn('L', 0.7, 80, 25);
-    driveForward(1.0, 100);
-    turn('L', 1.0, 80, 25);
-    driveForward(1.2, 100);
-    turn('R', 1.0, 80, 25);
-    Sleep(0.5);
-    driveForward(0.15, 50);
-    turn('L', 0.8, 100, -100);
-    s2.SetDegree(150);
-    Sleep(0.5);
-    driveForward(0.5, -100);
-    driveForward(0.15, 50);
-    s2.SetDegree(60);
-    Sleep(0.5);
-    s2.SetDegree(150);
+    // forward out of start
+    driveForward(0.6, 100);
+
+    // slight left
+    turn('L', 0.5, 100, 25);
+
+    // horziontally towrads ramp
+    driveForward(0.9, 100);
+
+    // 90 degree turn
+    turn('R', 0.565, 100, -100);
+
+    // up ramp
+    driveForward(2.0, 100);
+
+    // slight right
+    turn('R', 0.26, 100, -50);
+
+ 
+
+    // turn('R', 0.7, 80, 25);
+    // driveForward(0.3, 100);
+    // turn('L', 0.7, 80, 25);
+    // driveForward(1.0, 100);
+    // turn('L', 1.0, 80, 25);
+    // driveForward(1.2, 100);
+    // turn('R', 1.0, 80, 25);
+    // Sleep(0.5);
+    // driveForward(0.15, 50);
+    // turn('L', 0.8, 100, -100);
+    // s2.SetDegree(150);
+    // Sleep(0.5);
+    // driveForward(0.5, -100);
+    // driveForward(0.15, 50);
+    // s2.SetDegree(60);
+    // Sleep(0.5);
+    // s2.SetDegree(150);
 }
 void driveForward(float time, int percent)
 {
