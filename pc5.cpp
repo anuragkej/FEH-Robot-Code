@@ -38,8 +38,10 @@ int main()
     s1.SetDegree(180);
     s2.SetDegree(90);
 
+    driveForward(0.4, -40);
+
     // forward out of start
-    driveForward(0.6, 100);
+    driveForward(0.7, 100);
 
     // slight left
     turn('L', 0.5, 100, 25);
