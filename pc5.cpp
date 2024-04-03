@@ -50,12 +50,12 @@ int main()
     driveForward(0.9, 100);
 
     // 90 degree turn
-    turn('R', 0.52, 100, -100);
+    turn('R', 0.55, 100, -100);
 
     // up ramp
     driveForward(1.8, 100);
 
-    turn('R', 0.65, 100, -100);
+    turn('R', 0.7, 100, -100);
 
     driveForward(0.7, 100);
 
@@ -65,11 +65,11 @@ int main()
 
     Sleep(0.5);
 
-    driveForward(0.7, 100);
+    driveForward(0.9, 100);
 
-    turn('R', 0.52, 100, -100);
+    turn('R', 0.55, 100, -100);
 
-    driveForward(0.3, 100);
+    driveForward(2, 100);
 
     // turn('R', 0.7, 80, 25);
     // driveForward(0.3, 100);
