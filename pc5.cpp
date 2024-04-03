@@ -67,7 +67,7 @@ int main()
 
     driveForward(1, 100);
 
-    turn('R', 0.77, 100, -100);
+    turn('R', 0.73, 100, -100);
 
     driveForward(2.7, 100);
 
