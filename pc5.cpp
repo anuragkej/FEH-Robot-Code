@@ -71,6 +71,10 @@ int main()
 
     driveForward(2.7, 100);
 
+    turn('R', 0.1, 100, -100);
+
+    driveForward(0.15, 100);
+
     // turn('R', 0.7, 80, 25);
     // driveForward(0.3, 100);
     // turn('L', 0.7, 80, 25);
