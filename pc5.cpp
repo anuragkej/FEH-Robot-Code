@@ -46,11 +46,11 @@ int main()
     // slight left
     turn('L', 0.5, 100, 25);
 
-    // horziontally towrads ramp
+    // horziontally towards ramp
     driveForward(0.9, 100);
 
     // 90 degree turn
-    turn('R', 0.565, 100, -100);
+    turn('R', 0.48, 100, -100);
 
     // up ramp
     driveForward(2.0, 100);
