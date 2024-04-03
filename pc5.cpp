@@ -36,7 +36,7 @@ int main()
 
     // reset servo motors
     s1.SetDegree(180);
-    s2.SetDegree(90);
+    s2.SetDegree(80);
 
     driveForward(0.4, -40);
 
@@ -50,14 +50,14 @@ int main()
     driveForward(0.9, 100);
 
     // 90 degree turn
-    turn('R', 0.48, 100, -100);
+    turn('R', 0.565, 100, -100);
 
     // up ramp
-    driveForward(2.0, 100);
+    driveForward(1.8, 100);
 
     turn('R', 0.6, 100, -100);
 
-    driveForward(1.2, 100);
+    driveForward(0.75, 100);
 
     s2.SetDegree(40);
 
