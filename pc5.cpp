@@ -65,9 +65,9 @@ int main()
 
     Sleep(0.6);
 
-    driveForward(0.9, 100);
+    driveForward(1, 100);
 
-    turn('R', 0.7, 100, -100);
+    turn('R', 0.77, 100, -100);
 
     driveForward(2.7, 100);
 
