@@ -55,11 +55,15 @@ int main()
     // up ramp
     driveForward(1.8, 100);
 
-    turn('R', 0.6, 100, -100);
+    turn('R', 0.65, 100, -100);
 
     driveForward(0.7, 100);
 
+    Sleep(0.5);
+
     s2.SetDegree(40);
+
+    Sleep(0.5);
 
     driveForward(0.7, 100);
 
