@@ -50,16 +50,22 @@ int main()
     driveForward(0.9, 100);
 
     // 90 degree turn
-    turn('R', 0.565, 100, -100);
+    turn('R', 0.52, 100, -100);
 
     // up ramp
     driveForward(1.8, 100);
 
     turn('R', 0.6, 100, -100);
 
-    driveForward(0.75, 100);
+    driveForward(0.7, 100);
 
     s2.SetDegree(40);
+
+    driveForward(0.7, 100);
+
+    turn('R', 0.52, 100, -100);
+
+    driveForward(0.3, 100);
 
     // turn('R', 0.7, 80, 25);
     // driveForward(0.3, 100);
