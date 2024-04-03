@@ -38,7 +38,7 @@ int main()
     s1.SetDegree(180);
     s2.SetDegree(80);
 
-    driveForward(0.4, -40);
+    driveForward(0.25, -40);
 
     // forward out of start
     driveForward(0.7, 100);
@@ -59,17 +59,17 @@ int main()
 
     driveForward(0.7, 100);
 
-    Sleep(0.5);
+    Sleep(0.6);
 
     s2.SetDegree(40);
 
-    Sleep(0.5);
+    Sleep(0.6);
 
     driveForward(0.9, 100);
 
-    turn('R', 0.55, 100, -100);
+    turn('R', 0.62, 100, -100);
 
-    driveForward(2, 100);
+    driveForward(2.5, 100);
 
     // turn('R', 0.7, 80, 25);
     // driveForward(0.3, 100);
