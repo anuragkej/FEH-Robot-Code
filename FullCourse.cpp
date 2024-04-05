@@ -145,7 +145,7 @@ void fuel(int correctLever)
 void luggage()
 {
     // up ramp
-    driveForward(1.8, 100);
+    driveForward(2.1, 100);
 
     turn('R', 0.7, 100, -100);
 
