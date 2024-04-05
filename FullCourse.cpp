@@ -52,7 +52,7 @@ int main()
     fuel(correctLever);
 
     // intermediate step to turn to luggage task
-    turn('R', 0.645, 100, -100);
+    turn('R', 0.67, 100, -100);
 
     luggage();
 
@@ -64,14 +64,15 @@ int main()
 
 void fuel(int correctLever)
 {
+
+    s1.SetDegree(120);
+
     driveForward(0.78, 100);
 
     Sleep(0.25);
 
     // slight left
     turn('L', 0.9, 100, 25);
-
-    s1.SetDegree(120);
 
     // Check which lever to flip and perform some action
     if (correctLever == 0)
