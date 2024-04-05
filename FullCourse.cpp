@@ -158,6 +158,8 @@ void luggage()
 }
 void boardPass()
 {
+    int button;
+
     frm.SetPercent(25);
     flm.SetPercent(25);
     brm.SetPercent(25);
