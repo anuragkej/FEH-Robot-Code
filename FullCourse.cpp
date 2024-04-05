@@ -14,7 +14,7 @@
 
 void driveForward(float time, int percent);
 void turn(char direction, float time, int dominant_motor_percent, int nondom_motor_percent);
-void fuel();
+void fuel(int correctLever);
 void luggage();
 void boardPass();
 void passport();
@@ -27,14 +27,14 @@ FEHMotor brm(FEHMotor::Motor3, 7.0);
 FEHMotor flm(FEHMotor::Motor0, 7.0);
 FEHMotor frm(FEHMotor::Motor2, 7.0);
 
+FEHServo s1(FEHServo::Servo6);
+FEHServo s2(FEHServo::Servo7);
+
+AnalogInputPin light(FEHIO::P2_7);
+
 int main()
 {
     RCS.InitializeTouchMenu("E6aMLIy03");
-
-    FEHServo s1(FEHServo::Servo6);
-    FEHServo s2(FEHServo::Servo7);
-
-    AnalogInputPin light(FEHIO::P2_7);
 
     while (light.Value() > 0.9)
         ;
@@ -49,7 +49,7 @@ int main()
     // Hit Starting light
     driveForward(0.25, -40);
 
-    fuel();
+    fuel(correctLever);
 
     // intermediate step to turn to luggage task
     turn('R', 0.7, 100, -100);
@@ -62,7 +62,7 @@ int main()
     passport();
 }
 
-void fuel()
+void fuel(int correctLever)
 {
     driveForward(0.8, 100);
 
