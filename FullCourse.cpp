@@ -56,7 +56,7 @@ int main()
 
     luggage();
 
-    turn('L', 0.85, 100, -100);
+    turn('L', 0.88, 100, -100);
 
     boardPass();
     passport();
@@ -145,7 +145,7 @@ void fuel(int correctLever)
 void luggage()
 {
     // up ramp
-    driveForward(2.1, 100);
+    driveForward(1.9, 100);
 
     turn('R', 0.7, 100, -100);
 
@@ -206,18 +206,18 @@ void boardPass()
     {
         LCD.WriteLine("RED");
         driveForward(0.4, -100);
-        turn('R', 0.41, 100, -100);
+        turn('R', 0.54, 100, -100);
         driveForward(1.05, 100);
-        turn('L', 0.54, 100, -100);
+        turn('L', 0.41, 100, -100);
         driveForward(0.5, 100);
     }
     else
     {
         LCD.WriteLine("BLUE");
         driveForward(0.4, -100);
-        turn('R', 0.41, 100, -100);
+        turn('R', 0.54, 100, -100);
         driveForward(0.63, 100);
-        turn('L', 0.54, 100, -100);
+        turn('L', 0.41, 100, -100);
         driveForward(0.5, 100);
     }
 
