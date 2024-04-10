@@ -177,6 +177,7 @@ void boardPass()
     if (light.Value() < 0.9)
     {
         LCD.SetBackgroundColor(RED);
+        LCD.Write(light.Value());
         LCD.Clear();
         frm.SetPercent(0);
         flm.SetPercent(0);
@@ -188,6 +189,8 @@ void boardPass()
     else
     {
         LCD.SetBackgroundColor(BLUE);
+        LCD.Write(light.Value());
+
         LCD.Clear();
         frm.SetPercent(0);
         flm.SetPercent(0);
@@ -205,9 +208,14 @@ void boardPass()
     if (button == 0)
     {
         LCD.WriteLine("RED");
-        driveForward(0.4, -100);
+        /*driveForward(0.4, -100);
         turn('R', 0.54, 100, -100);
         driveForward(1.05, 100);
+        turn('L', 0.41, 100, -100);
+        driveForward(0.5, 100);*/
+        driveForward(0.4, -100);
+        turn('R', 0.54, 100, -100);
+        driveForward(0.63, 100);
         turn('L', 0.41, 100, -100);
         driveForward(0.5, 100);
     }
@@ -216,13 +224,13 @@ void boardPass()
         LCD.WriteLine("BLUE");
         driveForward(0.4, -100);
         turn('R', 0.54, 100, -100);
-        driveForward(0.63, 100);
+        driveForward(0.23, 100);
         turn('L', 0.41, 100, -100);
         driveForward(0.5, 100);
     }
 
     // code to back up from the button
-    driveForward(0.5, -100);
+    driveForward(0.2, -100);
     turn('L', 0.8, 100, -100);
     s2.SetDegree(150);
     Sleep(0.5);
