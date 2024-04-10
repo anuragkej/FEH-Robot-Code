@@ -18,6 +18,7 @@ void fuel(int correctLever);
 void luggage();
 void boardPass();
 void passport();
+void driveback();
 
 // declare motor on motor port 0, set maximum voltage to 9.0 V
 // right motor is inversed (i.e, driving forward, RM would be at a negative percent)
@@ -60,6 +61,7 @@ int main()
 
     boardPass();
     passport();
+    driveback();
 }
 
 void fuel(int correctLever)
@@ -161,12 +163,12 @@ void boardPass()
 {
     int button;
 
-    frm.SetPercent(25);
-    flm.SetPercent(25);
-    brm.SetPercent(25);
-    blm.SetPercent(25);
+    frm.SetPercent(40);
+    flm.SetPercent(40);
+    brm.SetPercent(40);
+    blm.SetPercent(40);
 
-    while (light.Value() > 1.9)
+    while (light.Value() > 1.8)
         ;
 
     frm.SetPercent(0);
@@ -246,10 +248,26 @@ void boardPass()
 }
 void passport()
 {
-    driveForward(0.15, 50);
+    driveForward(0.22, 50);
     s2.SetDegree(60);
     Sleep(0.5);
     s2.SetDegree(150);
+    Sleep(0.5);
+}
+
+void driveback()
+{
+    turn('R', 0.8, 100, -100);
+    driveForward(0.15, -50);
+    Sleep(0.5);
+    turn('R', 1.0, -80, -25);
+    driveForward(1.2, -100);
+    turn('L', 1.0, -80, -25);
+    driveForward(1.0, -100);
+    turn('L', 0.7, -80, -25);
+    driveForward(0.3, -100);
+    turn('R', 0.7, -80, -25);
+    driveForward(0.3, -100);
 }
 
 void driveForward(float time, int percent)
