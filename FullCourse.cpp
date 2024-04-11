@@ -52,6 +52,8 @@ int main()
 
     fuel(correctLever);
 
+    s1.SetDegree(180);
+
     // intermediate step to turn to luggage task
     turn('R', 0.64, 100, -100);
 
@@ -67,7 +69,7 @@ int main()
 void fuel(int correctLever)
 {
 
-    s1.SetDegree(130);
+    s1.SetDegree(121);
 
     driveForward(0.78, 100);
 
@@ -95,6 +97,7 @@ void fuel(int correctLever)
         s1.SetDegree(135);
 
         Sleep(0.5);
+        s1.SetDegree(121);
 
         driveForward(0.84, 100);
     }
@@ -118,6 +121,7 @@ void fuel(int correctLever)
         s1.SetDegree(135);
 
         Sleep(0.5);
+        s1.SetDegree(121);
 
         driveForward(0.5175, 100);
     }
