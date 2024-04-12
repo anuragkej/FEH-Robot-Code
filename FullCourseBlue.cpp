@@ -59,7 +59,7 @@ int main()
 
     luggage();
 
-    turn('L', 0.85, 100, -100);
+    turn('L', 0.81, 100, -100);
 
     boardPass();
     passport();
@@ -159,7 +159,7 @@ void luggage()
 
     Sleep(0.6);
 
-    s2.SetDegree(40);
+    s2.SetDegree(30);
 
     Sleep(0.6);
 }
@@ -175,19 +175,20 @@ void boardPass()
     float t = TimeNow();
 
     while (light.Value() > 1.9)
-        if (TimeNow() - t > 4.5) {
+        if (TimeNow() - t > 4.5)
+        {
             int override = 1;
             break;
-        }
-        ;
+        };
 
     frm.SetPercent(0);
     flm.SetPercent(0);
     brm.SetPercent(0);
     blm.SetPercent(0);
 
-    if (override = 1) {
-        driveForward(0.5,-100)
+    if (override = 1)
+    {
+        driveForward(0.5, -100)
     }
 
     /*if (light.Value() < 0.9)
@@ -204,17 +205,17 @@ void boardPass()
     }
     else
     {*/
-        LCD.SetBackgroundColor(BLUE);
-        LCD.Write(light.Value());
+    LCD.SetBackgroundColor(BLUE);
+    LCD.Write(light.Value());
 
-        LCD.Clear();
-        frm.SetPercent(0);
-        flm.SetPercent(0);
-        brm.SetPercent(0);
-        blm.SetPercent(0);
+    LCD.Clear();
+    frm.SetPercent(0);
+    flm.SetPercent(0);
+    brm.SetPercent(0);
+    blm.SetPercent(0);
 
-        button = 1;
-        //}
+    button = 1;
+    //}
 
     Sleep(0.5);
 
