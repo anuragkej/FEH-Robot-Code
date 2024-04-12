@@ -166,6 +166,7 @@ void luggage()
 void boardPass()
 {
     int button;
+    int override;
 
     frm.SetPercent(40);
     flm.SetPercent(40);
@@ -177,7 +178,7 @@ void boardPass()
     while (light.Value() > 1.9)
         if (TimeNow() - t > 4.5)
         {
-            int override = 1;
+            override = 1;
             break;
         };
 
@@ -186,10 +187,10 @@ void boardPass()
     brm.SetPercent(0);
     blm.SetPercent(0);
 
-    if (override = 1)
+    if (override == 1)
     {
-        driveForward(0.5, -100)
-    }
+        driveForward(0.5, -100);
+    };
 
     /*if (light.Value() < 0.9)
     {
