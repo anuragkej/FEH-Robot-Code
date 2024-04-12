@@ -55,11 +55,11 @@ int main()
     s1.SetDegree(180);
 
     // intermediate step to turn to luggage task
-    turn('R', 0.64, 100, -100);
+    turn('R', 0.655, 100, -100);
 
     luggage();
 
-    turn('L', 0.88, 100, -100);
+    turn('L', 0.85, 100, -100);
 
     boardPass();
     passport();
@@ -69,7 +69,7 @@ int main()
 void fuel(int correctLever)
 {
 
-    s1.SetDegree(121);
+    s1.SetDegree(120);
 
     driveForward(0.78, 100);
 
@@ -97,7 +97,7 @@ void fuel(int correctLever)
         s1.SetDegree(135);
 
         Sleep(0.5);
-        s1.SetDegree(121);
+        s1.SetDegree(120);
 
         driveForward(0.84, 100);
     }
@@ -121,7 +121,7 @@ void fuel(int correctLever)
         s1.SetDegree(135);
 
         Sleep(0.5);
-        s1.SetDegree(121);
+        s1.SetDegree(120);
 
         driveForward(0.5175, 100);
     }
@@ -172,7 +172,7 @@ void boardPass()
     brm.SetPercent(40);
     blm.SetPercent(40);
 
-    while (light.Value() > 1.8)
+    while (light.Value() > 1.7)
         ;
 
     frm.SetPercent(0);
@@ -272,7 +272,7 @@ void driveback()
     turn('L', 0.7, -80, -25);
     driveForward(0.3, -100);
     turn('R', 0.7, -80, -25);
-    driveForward(0.3, -100);
+    driveForward(0.5, -100);
 }
 
 void driveForward(float time, int percent)
