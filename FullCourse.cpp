@@ -174,7 +174,7 @@ void boardPass()
     int button;
     int override;
     float value;
-    float value1
+    float value1;
 
     frm.SetPercent(40);
     flm.SetPercent(40);
@@ -188,13 +188,14 @@ void boardPass()
         if (TimeNow() - t > 4.5)
         {
             override = 1;
+            button = 1;
             break;
         };
 
     do {
         value = light.Value();
         Sleep(25);
-        value1 = light.Value()
+        value1 = light.Value();
     }
     while (value1 <= value && override != 1);
 
@@ -214,7 +215,7 @@ void boardPass()
     if (value1 < 0.9)
     {
         LCD.SetBackgroundColor(RED);
-        LCD.Write(light.Value());
+        LCD.Write(value1);
         LCD.Clear();
         frm.SetPercent(0);
         flm.SetPercent(0);
@@ -225,17 +226,17 @@ void boardPass()
     }
     else
     {
-    LCD.SetBackgroundColor(BLUE);
-    LCD.Clear();
-    LCD.Write(light.Value());
+        LCD.SetBackgroundColor(BLUE);
+        LCD.Write(value1);
+        LCD.Clear();
 
 
-    frm.SetPercent(0);
-    flm.SetPercent(0);
-    brm.SetPercent(0);
-    blm.SetPercent(0);
+        frm.SetPercent(0);
+        flm.SetPercent(0);
+        brm.SetPercent(0);
+        blm.SetPercent(0);
 
-    button = 1;
+        button = 1;
     }
 
     Sleep(0.5);
