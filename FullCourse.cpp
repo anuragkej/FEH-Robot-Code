@@ -95,7 +95,7 @@ void fuel(int correctLever)
     if (correctLever == 0)
     {
         // Perform actions to flip left lever
-        
+
         driveForward(0.26, -100);
 
         Sleep(0.5);
@@ -115,7 +115,7 @@ void fuel(int correctLever)
     {
 
         // horziontally towards ramp
-        driveForward(0.0625, 100);
+        driveForward(0.07, 100);
 
         Sleep(0.5);
         // flip down
@@ -161,7 +161,7 @@ void luggage()
     driveForward(0.7, 100);
 
     Sleep(0.6);
-    
+
     // deposit luggage
     s2.SetDegree(30);
 
@@ -188,10 +188,17 @@ void boardPass()
             break;
         };
 
+    float value = 3;
+    while (abs(value-light.Value()) > 0.1 && override != 1) {
+        value = light.Value();
+        Sleep(100);
+    }
+
     frm.SetPercent(0);
     flm.SetPercent(0);
     brm.SetPercent(0);
     blm.SetPercent(0);
+
 
     // repositioning if robot missed light
     if (override == 1)
