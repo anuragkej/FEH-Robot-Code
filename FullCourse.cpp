@@ -173,6 +173,8 @@ void boardPass()
     // declare variables
     int button;
     int override;
+    float value;
+    float value1
 
     frm.SetPercent(40);
     flm.SetPercent(40);
@@ -182,19 +184,19 @@ void boardPass()
     float t = TimeNow();
 
     //drive until light is detected, or if no light is detected, for 4.5 seconds
-    while (light.Value() > 1.9)
+    while (light.Value() > 2.5)
         if (TimeNow() - t > 4.5)
         {
             override = 1;
             break;
         };
 
-    float value = 3;
     do {
         value = light.Value();
-        Sleep(50);
+        Sleep(25);
+        value1 = light.Value()
     }
-    while (abs(value-light.Value()) > 0.05 && override != 1);
+    while (value1 <= value && override != 1);
 
     frm.SetPercent(0);
     flm.SetPercent(0);
@@ -209,7 +211,7 @@ void boardPass()
     };
 
     // display light color and value on Proteus
-    if (light.Value() < 0.9)
+    if (value1 < 0.9)
     {
         LCD.SetBackgroundColor(RED);
         LCD.Write(light.Value());
