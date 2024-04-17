@@ -5,6 +5,7 @@
 #include <FEHServo.h>
 #include <FEHRCS.h>
 #include <FEHBattery.h>
+#include <math.h>
 
 // Servo Max: 2277
 // Servo Min: 500
@@ -60,13 +61,13 @@ int main()
     s1.SetDegree(180);
 
     // intermediate step to turn to luggage task
-    turn('R', 0.655, 100, -100);
+    turn('R', 0.66, 100, -100);
 
     // call luggage function
     luggage();
 
     // intermediate step to turn towards boarding pass light
-    turn('L', 0.81, 100, -100);
+    turn('L', 0.8, 100, -100);
 
     // call boarding pass function
     boardPass();
@@ -96,7 +97,7 @@ void fuel(int correctLever)
     {
         // Perform actions to flip left lever
 
-        driveForward(0.26, -100);
+        driveForward(0.23, -100);
 
         Sleep(0.5);
         // flip down
@@ -115,7 +116,7 @@ void fuel(int correctLever)
     {
 
         // horziontally towards ramp
-        driveForward(0.07, 100);
+        driveForward(0.085, 100);
 
         Sleep(0.5);
         // flip down
@@ -189,10 +190,11 @@ void boardPass()
         };
 
     float value = 3;
-    while (abs(value-light.Value()) > 0.1 && override != 1) {
+    do {
         value = light.Value();
-        Sleep(100);
+        Sleep(50);
     }
+    while (abs(value-light.Value()) > 0.05 && override != 1);
 
     frm.SetPercent(0);
     flm.SetPercent(0);
@@ -222,9 +224,10 @@ void boardPass()
     else
     {
     LCD.SetBackgroundColor(BLUE);
+    LCD.Clear();
     LCD.Write(light.Value());
 
-    LCD.Clear();
+
     frm.SetPercent(0);
     flm.SetPercent(0);
     brm.SetPercent(0);
@@ -235,7 +238,6 @@ void boardPass()
 
     Sleep(0.5);
 
-    LCD.WriteLine(button);
 
     // code to hit the correct button
     if (button == 0)
