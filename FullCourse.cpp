@@ -40,7 +40,7 @@ int main()
 {
     // initialize RCS connection
     RCS.InitializeTouchMenu("E6aMLIy03");
-    
+
     int timeStart = TimeNow();
     // wait for start light to turn on
     while (light.Value() > 0.9)
@@ -73,7 +73,7 @@ int main()
     luggage();
 
     // intermediate step to turn towards boarding pass light
-    turn('L', 0.8, 100, -100);
+    turn('L', 0.69, 100, -100);
 
     // call boarding pass function
     boardPass();
@@ -102,6 +102,8 @@ void fuel(int correctLever)
     if (correctLever == 0)
     {
         // Perform actions to flip left lever
+
+        Sleep(0.5);
 
         driveForward(0.23, -100);
 
@@ -263,7 +265,7 @@ void boardPass()
         LCD.WriteLine("BLUE");
         driveForward(0.4, -100);
         turn('R', 0.54, 100, -100);
-        driveForward(0.23, 100);
+        driveForward(0.25, 100);
         turn('L', 0.41, 100, -100);
         driveForward(0.5, 100);
     }
