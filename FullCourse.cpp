@@ -6,6 +6,7 @@
 #include <FEHRCS.h>
 #include <FEHBattery.h>
 #include <math.h>
+#include<ctime>
 
 // Servo Max: 2277
 // Servo Min: 500
@@ -39,10 +40,15 @@ int main()
 {
     // initialize RCS connection
     RCS.InitializeTouchMenu("E6aMLIy03");
-
+    
+    int timeStart = TimeNow();
     // wait for start light to turn on
     while (light.Value() > 0.9)
+        if (TimeNow() - timeStart > 7.0){
+            break;
+        }
         ;
+
 
     // Get correct lever from the RCS
     int correctLever = RCS.GetCorrectLever();
@@ -61,7 +67,7 @@ int main()
     s1.SetDegree(180);
 
     // intermediate step to turn to luggage task
-    turn('R', 0.66, 100, -100);
+    turn('R', 0.7, 100, -100);
 
     // call luggage function
     luggage();
@@ -297,18 +303,17 @@ void driveback()
 {
     // path to drive from platform back to start area
     turn('R', 0.8, 100, -100);
-    driveForward(0.35, -50);
+    driveForward(0.5, -50);
     s2.SetDegree(80);
     Sleep(0.5);
     turn('R', 1.0, -80, -25);
-    driveForward(1.2, -100);
+    driveForward(0.4, -100);
     turn('L', 1.0, -80, -25);
-    driveForward(1.0, -100);
-    turn('L', 0.7, -80, -25);
-    driveForward(0.3, -100);
-    turn('R', 0.7, -80, -25);
+    driveForward(3.5, -100);
+    //turn('L', 0.7, -80, -25);
+   // driveForward(0.3, -100);
+ //   turn('R', 0.65, -80, -25);
     // press final button
-    driveForward(0.5, -100);
 }
 
 // function to drive forward
