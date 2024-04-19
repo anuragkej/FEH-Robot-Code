@@ -212,7 +212,7 @@ void boardPass()
     };
 
     // display light color and value on Proteus
-    if (value1 < 0.9)
+    if (value < 0.9)
     {
         LCD.SetBackgroundColor(RED);
         LCD.Write(value1);
@@ -297,7 +297,7 @@ void driveback()
 {
     // path to drive from platform back to start area
     turn('R', 0.8, 100, -100);
-    driveForward(0.15, -50);
+    driveForward(0.35, -50);
     s2.SetDegree(80);
     Sleep(0.5);
     turn('R', 1.0, -80, -25);
