@@ -215,7 +215,7 @@ void boardPass()
     if (value < 0.9)
     {
         LCD.SetBackgroundColor(RED);
-        LCD.Write(value1);
+        LCD.Write(value);
         LCD.Clear();
         frm.SetPercent(0);
         flm.SetPercent(0);
@@ -227,7 +227,7 @@ void boardPass()
     else
     {
         LCD.SetBackgroundColor(BLUE);
-        LCD.Write(value1);
+        LCD.Write(value);
         LCD.Clear();
 
 
