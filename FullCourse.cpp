@@ -265,7 +265,7 @@ void boardPass()
         LCD.WriteLine("BLUE");
         driveForward(0.4, -100);
         turn('R', 0.54, 100, -100);
-        driveForward(0.25, 100);
+        driveForward(0.26, 100);
         turn('L', 0.41, 100, -100);
         driveForward(0.5, 100);
     }
